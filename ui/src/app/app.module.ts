@@ -1,4 +1,4 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
@@ -25,6 +25,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule, // per angular docs, HttpClientModule must be imported after BrowserModule
     MsalModule.forRoot(
       new PublicClientApplication({ // MSAL Configuration
         auth: {
@@ -42,10 +43,11 @@ const routes: Routes = [
           }
         }
       }), {
-        interactionType: InteractionType.Redirect, // MSAL Guard Configuration
+      interactionType: InteractionType.Redirect, // MSAL Guard Configuration
     }, {
-        interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
-        protectedResourceMap: new Map([
+      interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
+      protectedResourceMap: new Map([
+        [`${Constants.apiEndpointUri}/*`, ['api://9db8d08a-d9b6-4e4c-8b46-a3898f985735/Files.Read']]
       ])
     }),
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),
