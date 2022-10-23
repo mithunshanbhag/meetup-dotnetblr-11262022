@@ -1,6 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
 import { Observable } from 'rxjs';
+import { Constants } from './constants';
 
 @Component({
   selector: 'app-landing-page',
@@ -23,15 +25,19 @@ export class LandingPageComponent implements OnInit {
   constructor(
     private msalBroadcastService: MsalBroadcastService,
     private msalService: MsalService,
+    private httpClient: HttpClient,
   ) {
     console.log('In LandingPageComponent::ctor');
   }
 
   ngOnInit(): void {
     console.log('In LandingPageComponent::ngOnInit');
+
     //this.msalBroadcastService.msalSubject$.subscribe((sub) => { sub.payload == EventType.})
     // for (const account of this.msalService.instance.getAllAccounts()) {
     //   console.log(account);
     // }
+
+    this.httpClient.get<string>(`${Constants.apiEndpointUri}/profiles/1`).subscribe();
   }
 }
