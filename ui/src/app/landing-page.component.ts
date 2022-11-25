@@ -39,6 +39,8 @@ export class LandingPageComponent implements OnInit {
       console.log(`tenantId: ${account.tenantId}`);
     });
 
-    this.httpClient.get<string>(`${Constants.apiEndpointUri}/items`).subscribe();
+    this.httpClient.get<string>(`${Constants.apiEndpointUri}/items/3`).subscribe();
+
+    this.httpClient.post<string>(`${Constants.apiEndpointUri}/items/3`, null).subscribe();
   }
 }

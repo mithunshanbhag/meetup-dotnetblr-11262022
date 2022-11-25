@@ -10,10 +10,16 @@ namespace api;
 //[RequiredScope("Files.Read")]
 public class ItemsController : Controller
 {
-    [HttpGet]
-    [HttpOptions]
-    public ActionResult GetItems()
+    [HttpGet("{id:int}")]
+    public ActionResult GetItem(int id)
     {
-        return Ok("Success: Returning 200/OK");
+        return Ok($"Successfully fetched item #{id}");
     }
+
+    [HttpPost("{id:int}")]
+    public ActionResult UpdateItem(int id)
+    {
+        return Ok($"Successfully updated item #{id}");
+    }
+
 }

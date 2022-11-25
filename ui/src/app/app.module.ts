@@ -49,7 +49,8 @@ const routes: Routes = [
       protectedResourceMap: new Map([
         [
           `${Constants.apiEndpointUri}/*`, [
-            `api://${Constants.clientId}/Items.Read`
+            `api://${Constants.clientId}/Items.Read`,
+            `api://${Constants.clientId}/Items.Write`
           ]
         ]
       ])
