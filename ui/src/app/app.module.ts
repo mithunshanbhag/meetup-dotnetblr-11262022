@@ -48,9 +48,8 @@ const routes: Routes = [
       interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
       protectedResourceMap: new Map([
         [
-          `${Constants.apiEndpointUri}/*`, [
-            `api://${Constants.clientId}/Items.Read`,
-            `api://${Constants.clientId}/Items.Write`
+          `${Constants.apiEndpointUri}/items/*`, [
+            `api://${Constants.clientId}/Items.Read`
           ]
         ]
       ])

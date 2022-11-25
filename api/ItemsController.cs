@@ -1,25 +1,19 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Identity.Web.Resource;
 
 namespace api;
 
 [ApiController]
 [Route("[controller]")]
-[Authorize]
-//[Authorize(Roles = "Tailwind.Contributor")]
-//[RequiredScope("Files.Read")]
 public class ItemsController : Controller
 {
     [HttpGet("{id:int}")]
+    [Authorize]
+    [RequiredScope("Items.Read")]
+    [Authorize(Roles = "ItemReadersRole")]
     public ActionResult GetItem(int id)
     {
         return Ok($"Successfully fetched item #{id}");
     }
-
-    [HttpPost("{id:int}")]
-    public ActionResult UpdateItem(int id)
-    {
-        return Ok($"Successfully updated item #{id}");
-    }
-
 }
