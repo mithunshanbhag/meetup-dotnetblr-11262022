@@ -23,7 +23,6 @@ export class LandingPageComponent implements OnInit {
   userPic$: Observable<string> = new Observable<string>();
 
   constructor(
-    private msalBroadcastService: MsalBroadcastService,
     private msalService: MsalService,
     private httpClient: HttpClient,
   ) {
@@ -33,11 +32,13 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
     console.log('In LandingPageComponent::ngOnInit');
 
-    //this.msalBroadcastService.msalSubject$.subscribe((sub) => { sub.payload == EventType.})
-    // for (const account of this.msalService.instance.getAllAccounts()) {
-    //   console.log(account);
-    // }
+    // dump user info to console
+    this.msalService.instance.getAllAccounts().forEach(account => {
+      console.log(`name: ${account.name}`);
+      console.log(`username: ${account.username}`);
+      console.log(`tenantId: ${account.tenantId}`);
+    });
 
-    this.httpClient.get<string>(`${Constants.apiEndpointUri}/profiles/1`).subscribe();
+    this.httpClient.get<string>(`${Constants.apiEndpointUri}/items`).subscribe();
   }
 }

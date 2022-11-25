@@ -47,7 +47,11 @@ const routes: Routes = [
     }, {
       interactionType: InteractionType.Redirect, // MSAL Interceptor Configuration
       protectedResourceMap: new Map([
-        [`${Constants.apiEndpointUri}/*`, ['api://9db8d08a-d9b6-4e4c-8b46-a3898f985735/Files.Read']]
+        [
+          `${Constants.apiEndpointUri}/*`, [
+            `api://${Constants.clientId}/Items.Read`
+          ]
+        ]
       ])
     }),
     RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' }),

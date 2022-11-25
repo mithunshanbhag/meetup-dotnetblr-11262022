@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
+import { MsalService } from '@azure/msal-angular';
 
 @Component({
   selector: 'app-logout',
@@ -9,7 +9,6 @@ import { MsalBroadcastService, MsalService } from '@azure/msal-angular';
 export class LogoutComponent implements OnInit {
 
   constructor(
-    private msalBroadcastService: MsalBroadcastService,
     private msalService: MsalService,
   ) {
     console.log('In LogoutComponent::ctor');
