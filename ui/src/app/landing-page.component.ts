@@ -17,7 +17,7 @@ import { Constants } from './constants';
 })
 export class LandingPageComponent implements OnInit {
 
-  title = 'demo: implicit flow (landing page)';
+  title = 'oauth2 flow (landing page)';
 
   apiResponse$: Observable<any> = new Observable<any>();
 
