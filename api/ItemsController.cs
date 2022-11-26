@@ -11,7 +11,7 @@ public class ItemsController : Controller
     [HttpGet("{id:int}")]
     [Authorize]
     [RequiredScope("Items.Read")]
-    [Authorize(Roles = "ItemReadersRole")]
+    //[Authorize(Roles = "ItemReadersRole")]
     public ActionResult GetItem(int id)
     {
         return Ok($"Successfully fetched item #{id}");
